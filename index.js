@@ -8,6 +8,10 @@ const app = express();
 
 const PORT = process.env.PORT;
 
+app.get("/", (req,res) => {
+    res.status(200).send("/ is working!")
+})
+
 app.use("/api",routes);
 
 app.listen(PORT, () => {
