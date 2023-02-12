@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT;
 
-app.use("/api",routes);
+app.get("/api",routes);
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
