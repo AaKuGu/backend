@@ -2,5 +2,5 @@ import { Router } from "express";
 export const routes = Router();
 
 routes.get("/hallo", (req, res) => {
-  res.status(200).send({ message: "/api/get working fine" });
+  res.status(200).json({ message: "/api/get working fine" });
 });
