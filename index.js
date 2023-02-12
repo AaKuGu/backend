@@ -1,11 +1,16 @@
-import express from 'express';
+import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
-app.use("/", (req,res) => {
-    res.status(200).send("this is working fine!")
-})
+app.use("/", (req, res) => {
+  res.status(200).send("this is working fine!");
+});
 
-app.listen(8000, () => {
-    console.log(`server running on http://localhost:8000`)
-})
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log(`server running on http://localhost:${PORT}`);
+});
