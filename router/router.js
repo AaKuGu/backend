@@ -12,7 +12,6 @@ routes.get("/serverinfo", (req, res) => {
 routes.post("/register", (req, res) => {
   try {
     const { email } = req.body;
-    res.status(200).send({ message: email });
 
     // starting nodeMailer code
 
@@ -22,6 +21,9 @@ routes.post("/register", (req, res) => {
       "password : ",
       process.env.PASSWORD
     );
+
+    res.status(200).send({ message: email });
+
 
     // let mailTransporter = nodemailer.createTransport({
     //   service: "gmail",
