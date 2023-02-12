@@ -16,7 +16,7 @@ routes.post("/register", (req, res) => {
     // starting nodeMailer code
 
     let mailTransporter = nodemailer.createTransport({
-      service: "smtp.gmail.com",
+      service: "gmail",
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
