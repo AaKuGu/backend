@@ -15,38 +15,30 @@ routes.post("/register", (req, res) => {
 
     // starting nodeMailer code
 
-    console.log(
-      "emial",
-      process.env.EMAIL,
-      "password : ",
-      process.env.PASSWORD
-    );
+    let mailTransporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+      },
+    });
 
-    res.status(200).send({ message: email });
+    let mailDetails = {
+      from: process.env.EMAIL,
+      to: emai,
+      subject: "Test mail",
+      text: "Node.js testing mail for GeeksforGeeks",
+    };
 
-
-    // let mailTransporter = nodemailer.createTransport({
-    //   service: "gmail",
-    //   auth: {
-    //     user: process.env.EMAIL,
-    //     pass: process.env.PASSWORD,
-    //   },
-    // });
-
-    // let mailDetails = {
-    //   from: "xyz@gmail.com",
-    //   to: "abc@gmail.com",
-    //   subject: "Test mail",
-    //   text: "Node.js testing mail for GeeksforGeeks",
-    // };
-
-    // mailTransporter.sendMail(mailDetails, function (err, data) {
-    //   if (err) {
-    //     console.log("Error Occurs");
-    //   } else {
-    //     console.log("Email sent successfully");
-    //   }
-    // });
+    mailTransporter.sendMail(mailDetails, function (err, data) {
+      if (err) {
+        console.log("Error Occurs");
+        res.status(404).send({ error: err.message });
+      } else {
+        console.log("Email sent successfully");
+        res.status(200).send({ message: data });
+      }
+    });
   } catch (error) {
     res.status(404).send({ error: error.message });
   }
