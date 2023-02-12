@@ -25,7 +25,7 @@ routes.post("/register", (req, res) => {
 
     let mailDetails = {
       from: process.env.EMAIL,
-      to: emai,
+      to: email,
       subject: "Test mail",
       text: "Node.js testing mail for GeeksforGeeks",
     };
